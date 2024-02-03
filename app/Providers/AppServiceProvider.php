@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema; // Import the Schema facade
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +20,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Set the default string length for migrations (added for compatibility with MySQL older than version 5.7.7 and MariaDB older than version 10.2.2)
+        Schema::defaultStringLength(191);
     }
 }
+
+
